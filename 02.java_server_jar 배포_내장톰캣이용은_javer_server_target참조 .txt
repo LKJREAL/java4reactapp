@@ -1,0 +1,30 @@
+02.java_server_jar 배포_내장톰캣이용은_javer_server_target참조 
+
+
+[root@React_Aspera was]# pwd
+/home/was
+[root@React_Aspera was]# ll
+total 42028
+-rw-r--r-- 1 root root 43017602 Oct  3 18:38 java_server-0.0.1-SNAPSHOT.jar
+-rw------- 1 root root     8576 Oct  8 19:48 nohup.out
+-rwxr-xr-x 1 root root       59 Oct  3 18:58 start.sh
+[root@React_Aspera was]# cat start.sh 
+#!/bin/sh
+nohup java -jar java_server-0.0.1-SNAPSHOT.jar &
+[root@React_Aspera was]# ps -ef|grep nginx
+root        1422       1  0 19:44 ?        00:00:00 nginx: master process /usr/sbin/nginx
+nginx       1425    1422  0 19:44 ?        00:00:00 nginx: worker process
+nginx       1427    1422  0 19:44 ?        00:00:00 nginx: worker process
+nginx       1429    1422  0 19:44 ?        00:00:00 nginx: worker process
+nginx       1431    1422  0 19:44 ?        00:00:00 nginx: worker process
+root        3452    3036  0 19:48 pts/0    00:00:00 grep --color=auto nginx
+[root@React_Aspera was]# ./
+bash: ./: Is a directory
+[root@React_Aspera was]# 
+[root@React_Aspera was]# ./start.sh 
+nohup: appending output to 'nohup.out'
+[root@React_Aspera was]# ps -ef|grep java_server
+root        3348    2407 21 19:48 pts/0    00:00:15 java -jar java_server-0.0.1-SNAPSHOT.jar
+root        3543    3036  0 19:49 pts/0    00:00:00 grep --color=auto java_server
+[root@React_Aspera was]#
+
